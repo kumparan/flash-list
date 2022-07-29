@@ -3,6 +3,7 @@
 #include <CoreComponentsRegistry.h>
 #include <fbjni/fbjni.h>
 #include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
+#include <react/renderer/components/rnflashlist/ComponentDescriptors.h>
 #include <react/renderer/components/rncore/ComponentDescriptors.h>
 #include <rncli.h>
 
@@ -23,6 +24,11 @@ MainComponentsRegistry::sharedProviderRegistry() {
   //
   // providerRegistry->add(concreteComponentDescriptorProvider<
   //        AocViewerComponentDescriptor>());
+
+  // TODO: Remove when autolinked
+  providerRegistry->add(concreteComponentDescriptorProvider<CellContainerComponentDescriptor>());
+  providerRegistry->add(concreteComponentDescriptorProvider<AutoLayoutViewComponentDescriptor>());
+
   return providerRegistry;
 }
 

@@ -7,7 +7,11 @@ include $(REACT_ANDROID_DIR)/Android-prebuilt.mk
 # include $(GENERATED_SRC_DIR)/codegen/jni/Android.mk
 
 # Includes the MK file for autolinked libraries
-include $(PROJECT_BUILD_DIR)/generated/rncli/src/main/jni/Android-rncli.mk  
+include $(PROJECT_BUILD_DIR)/generated/rncli/src/main/jni/Android-rncli.mk
+
+# TODO: Remove when autolinked
+include $(NODE_MODULES_DIR)/@shopify/flash-list/android/build/generated/source/codegen/jni/Android.mk
+
 
 include $(CLEAR_VARS)
 
@@ -22,6 +26,8 @@ LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/*.cpp) $(wildcard $(PROJECT_BUILD_DI
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) $(PROJECT_BUILD_DIR)/generated/rncli/src/main/jni
 
 # Here you should add any native library you wish to depend on.
+
+# TODO: Remove libreact_codegen_rnflashlist when autolinked
 LOCAL_SHARED_LIBRARIES := \
   libfabricjni \
   libfbjni \
@@ -29,6 +35,7 @@ LOCAL_SHARED_LIBRARIES := \
   libglog \
   libjsi \
   libreact_codegen_rncore \
+  libreact_codegen_rnflashlist \
   libreact_debug \
   libreact_nativemodule_core \
   libreact_render_componentregistry \
