@@ -13,7 +13,7 @@ import kotlin.math.roundToInt
 /** ViewManager for AutoLayoutView - Container for all RecyclerListView children. Automatically removes all gaps and overlaps for GridLayouts with flexible spans.
  * Note: This cannot work for masonry layouts i.e, pinterest like layout */
 @ReactModule(name = AutoLayoutViewManager.REACT_CLASS)
-class AutoLayoutViewManager: ViewGroupManager<AutoLayoutView>(), AutoLayoutViewManagerInterface<AutoLayoutView> {
+class AutoLayoutViewManager : ViewGroupManager<AutoLayoutView>(), AutoLayoutViewManagerInterface<AutoLayoutView> {
     private val mDelegate: ViewManagerDelegate<AutoLayoutView>
 
     init {
@@ -32,13 +32,10 @@ class AutoLayoutViewManager: ViewGroupManager<AutoLayoutView>(), AutoLayoutViewM
         return AutoLayoutView(context).also { it.pixelDensity = context.resources.displayMetrics.density.toDouble() }
     }
 
-    override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-        return MapBuilder.builder<String, Any>().put(
-                "onBlankAreaEvent",
-                MapBuilder.of(
-                        "registrationName", "onBlankAreaEvent")
-        ).build();
-    }
+    override fun getExportedCustomDirectEventTypeConstants() = mutableMapOf(
+            "onBlankAreaEvent" to mutableMapOf("registrationName" to "onBlankAreaEvent"),
+            "topOnBlankAreaEvent" to mutableMapOf("registrationName" to "onBlankAreaEvent"),
+    )
 
     @ReactProp(name = "horizontal")
     override fun setHorizontal(view: AutoLayoutView, isHorizontal: Boolean) {
