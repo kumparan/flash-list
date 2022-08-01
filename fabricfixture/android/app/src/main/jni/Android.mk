@@ -9,7 +9,9 @@ include $(REACT_ANDROID_DIR)/Android-prebuilt.mk
 # Includes the MK file for autolinked libraries
 include $(PROJECT_BUILD_DIR)/generated/rncli/src/main/jni/Android-rncli.mk
 
-# TODO: Remove when autolinked
+# TODO: fabricfixture app needs to be linked manually because linking flash list by `link:../` casues
+# autolingking to fail. It works correctly otherwise, consider removing this once the autolinking starts
+# working.
 include $(NODE_MODULES_DIR)/@shopify/flash-list/android/build/generated/source/codegen/jni/Android.mk
 
 
@@ -27,7 +29,9 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) $(PROJECT_BUILD_DIR)/generated/rncli/sr
 
 # Here you should add any native library you wish to depend on.
 
-# TODO: Remove libreact_codegen_rnflashlist when autolinked
+# TODO: fabricfixture app needs to be linked manually because linking flash list by `link:../` casues
+# autolingking to fail. It works correctly otherwise, consider removing libreact_codegen_rnflashlist once
+# the autolinking starts working.
 LOCAL_SHARED_LIBRARIES := \
   libfabricjni \
   libfbjni \
@@ -48,7 +52,7 @@ LOCAL_SHARED_LIBRARIES := \
   libyoga
 
 # Autolinked libraries
-LOCAL_SHARED_LIBRARIES += $(call import-codegen-modules) 
+LOCAL_SHARED_LIBRARIES += $(call import-codegen-modules)
 
 # If you wish to add a custom TurboModule or Fabric component in your app you
 # will have to link against it here:

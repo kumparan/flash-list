@@ -25,7 +25,9 @@ MainComponentsRegistry::sharedProviderRegistry() {
   // providerRegistry->add(concreteComponentDescriptorProvider<
   //        AocViewerComponentDescriptor>());
 
-  // TODO: Remove when autolinked
+  // TODO: fabricfixture app needs to be linked manually because linking flash list by `link:../`
+  // casues autolingking to fail. It works correctly otherwise, consider removing this once the
+  // autolinking starts working.
   providerRegistry->add(concreteComponentDescriptorProvider<CellContainerComponentDescriptor>());
   providerRegistry->add(concreteComponentDescriptorProvider<AutoLayoutViewComponentDescriptor>());
 
