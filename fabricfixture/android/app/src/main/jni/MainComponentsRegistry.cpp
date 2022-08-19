@@ -3,7 +3,6 @@
 #include <CoreComponentsRegistry.h>
 #include <fbjni/fbjni.h>
 #include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
-#include <react/renderer/components/rnflashlist/ComponentDescriptors.h>
 #include <react/renderer/components/rncore/ComponentDescriptors.h>
 #include <rncli.h>
 
@@ -24,12 +23,6 @@ MainComponentsRegistry::sharedProviderRegistry() {
   //
   // providerRegistry->add(concreteComponentDescriptorProvider<
   //        AocViewerComponentDescriptor>());
-
-  // TODO: fabricfixture app needs to be linked manually because linking flash list by `link:../`
-  // casues autolingking to fail. It works correctly otherwise, consider removing this once the
-  // autolinking starts working.
-  providerRegistry->add(concreteComponentDescriptorProvider<CellContainerComponentDescriptor>());
-  providerRegistry->add(concreteComponentDescriptorProvider<AutoLayoutViewComponentDescriptor>());
 
   return providerRegistry;
 }
